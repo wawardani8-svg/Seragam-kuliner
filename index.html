@@ -362,8 +362,9 @@
 
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
                     <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Pembayaran</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Pembayaran Terverifikasi</p>
                         <p id="statNominal" class="text-2xl font-extrabold text-maroon-700 mt-1">Rp0</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Hanya yang sudah diverifikasi</p>
                     </div>
                     <div class="w-12 h-12 rounded-xl bg-maroon-50 text-maroon-700 flex items-center justify-center text-xl">
                         <i class="fa-solid fa-wallet"></i>
@@ -869,7 +870,8 @@
             const total = submissionsData.length;
             const verified = submissionsData.filter(i => i.status === 'Sudah Diverifikasi').length;
             const pending = total - verified;
-            const totalNominal = total * 250000;
+            // Nominal uang dihitung HANYA dari mahasiswa yang statusnya 'Sudah Diverifikasi'
+            const totalNominal = verified * 250000;
 
             document.getElementById('statTotal').innerText = total;
             document.getElementById('statVerified').innerText = verified;
